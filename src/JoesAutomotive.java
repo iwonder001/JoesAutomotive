@@ -1,5 +1,3 @@
-import javax.swing.JFrame;
-
 import java.awt.FlowLayout;
 
 import javax.swing.*;
@@ -16,6 +14,9 @@ public class JoesAutomotive extends JFrame {
 		private JCheckBox inspection;
 		private JCheckBox mufflerReplacement;
 		private JCheckBox tireRotation;
+		private JPanel panel;
+		private JPanel panel1;
+		private JPanel panel2;
 		
 		public JoesAutomotive(){
 			//Create text for the title bar
@@ -32,19 +33,42 @@ public class JoesAutomotive extends JFrame {
 			inspection = new JCheckBox("Inspection ($15.00");
 			mufflerReplacement = new JCheckBox("Muffler Replacement ($100.00");
 			tireRotation = new JCheckBox("Tire Rotation ($20.00");
+			//add first panel
+			panel = new JPanel();
+			panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+			panel.add(messageTop);
+			panel.add(oilChange);
+			oilChange.addItemListener(new CheckboxListener());
+			panel.add(lubeJob);
+			lubeJob.addItemListener(new CheckboxListener());
+			panel.add(radiatorFlush);
+			radiatorFlush.addItemListener(new CheckboxListener());
+			panel.add(transmissionFlush);
+			transmissionFlush.addItemListener(new CheckboxListener());
+			panel.add(inspection);
+			inspection.addItemListener(new CheckboxListener());
+			panel.add(mufflerReplacement);
+			mufflerReplacement.addItemListener(new CheckboxListener());
+			panel.add(tireRotation);
+			add(panel);// add panel to frame
+			setVisible(true);
+			
+			/**Private inner class that handles the event when the user 
+			 * clicks one of the check boxes
+			 */
 			
 			//Add an item listener to the check boxes
-			oilChange.addItemListener(new CheckboxListener());
-			lubeJob.addItemListener(new CheckboxListener());
-			radiatorFlush.addItemListener(new CheckboxListener());
-			transmissionFlush.addItemListener(new CheckboxListener());
-			inspection.addItemListener(new CheckboxListener());
-			mufflerReplacement.addItemListener(new CheckboxListener());
-			tireRotation.addItemListener(new CheckboxListener());
+//			oilChange.addItemListener(new CheckboxListener());
+//			lubeJob.addItemListener(new CheckboxListener());
+//			radiatorFlush.addItemListener(new CheckboxListener());
+//			transmissionFlush.addItemListener(new CheckboxListener());
+//			inspection.addItemListener(new CheckboxListener());
+//			mufflerReplacement.addItemListener(new CheckboxListener());
+//			tireRotation.addItemListener(new CheckboxListener());
 			
 			//add a FlowLayout manager to the content pane
-			setLayout(new FlowLayout());
-			
+//			setLayout(new FlowLayout());
+		
 			
 		}
 }
