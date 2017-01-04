@@ -1,4 +1,7 @@
 import javax.swing.JFrame;
+
+import java.awt.FlowLayout;
+
 import javax.swing.*;
 
 public class JoesAutomotive extends JFrame {
@@ -28,6 +31,19 @@ public class JoesAutomotive extends JFrame {
 			transmissionFlush = new JCheckBox("Transmission Flush ($80.00");
 			inspection = new JCheckBox("Inspection ($15.00");
 			mufflerReplacement = new JCheckBox("Muffler Replacement ($100.00");
+			tireRotation = new JCheckBox("Tire Rotation ($20.00");
+			
+			//Add an item listener to the check boxes
+			oilChange.addItemListener(new CheckboxListener());
+			lubeJob.addItemListener(new CheckboxListener());
+			radiatorFlush.addItemListener(new CheckboxListener());
+			transmissionFlush.addItemListener(new CheckboxListener());
+			inspection.addItemListener(new CheckboxListener());
+			mufflerReplacement.addItemListener(new CheckboxListener());
+			tireRotation.addItemListener(new CheckboxListener());
+			
+			//add a FlowLayout manager to the content pane
+			setLayout(new FlowLayout());
 			
 			
 		}
