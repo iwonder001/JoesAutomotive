@@ -1,4 +1,7 @@
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.*;
 
@@ -38,17 +41,11 @@ public class JoesAutomotive extends JFrame {
 			panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 			panel.add(messageTop);
 			panel.add(oilChange);
-			oilChange.addItemListener(new CheckboxListener());
 			panel.add(lubeJob);
-			lubeJob.addItemListener(new CheckboxListener());
 			panel.add(radiatorFlush);
-			radiatorFlush.addItemListener(new CheckboxListener());
 			panel.add(transmissionFlush);
-			transmissionFlush.addItemListener(new CheckboxListener());
 			panel.add(inspection);
-			inspection.addItemListener(new CheckboxListener());
 			panel.add(mufflerReplacement);
-			mufflerReplacement.addItemListener(new CheckboxListener());
 			panel.add(tireRotation);
 			add(panel);// add panel to frame
 			setVisible(true);
@@ -56,7 +53,50 @@ public class JoesAutomotive extends JFrame {
 			/**Private inner class that handles the event when the user 
 			 * clicks one of the check boxes
 			 */
+				// if x is selected then total = total + 26 
+				// if x is selected then total = total + 18
 			
+			//event handling code.  What happens when the user clicks on the button.  This is the method
+			public void actionPerformed(ActionEvent e){
+				double total = 0;
+				
+				if(oilChange.isSelected()){
+					total = total + 26.00;
+				}
+				if(lubeJob.isSelected()){
+					total = total + 18.00;
+				}
+				if(radiatorFlush.isSelected()){
+					total = total + 30.00;
+				}
+				if(transmissionFlush.isSelected()){
+					total = total + 80.00;
+				}
+				if(inspection.isSelected()){
+					total = total + 15.00;
+				}
+				if(mufflerReplacement.isSelected()){
+					total = total + 100.00;
+				}
+				if(tireRotation.isSelected()){
+					total = total + 20.00;
+				}
+				//calculating miles
+				double miles;
+				double kilos;
+				final double CONV = 0.6214;
+				kilos = Double.parseDouble(kiloTextField.getText());
+				//line 58 is the same as lines 60 & 61.  It is just a shorter version.
+				//String input = kiloTextField.getText();
+				//kilos = Double.parseDouble(input);
+			     miles = kilos * CONV;
+				mileTextField.setText("" + String.format("%.2f", miles)); 
+				//quickest way to convert from integer to a string by using the "", with the space in between
+				
+				/*different ways to show text
+				JOptionPane.showMessageDialog(null, "Kilometers: " + kilos+ "\nMiles: " + String.format("%.2f", miles)); 
+				can also sysout(miles); */
+			}
 			//Add an item listener to the check boxes
 //			oilChange.addItemListener(new CheckboxListener());
 //			lubeJob.addItemListener(new CheckboxListener());
